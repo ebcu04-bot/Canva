@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Canva Keywords — Flashcards (Grade 5, Chapter 4)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;800&family=Atkinson+Hyperlegible:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --desk:#E9E6F2; --dot:#C9C3DD; --bar:#5B34C7; --bar-ink:#FFFFFF; --panel:#FFFFFF; --panel-line:#DCD7EA;
+  --ink:#24213A; --muted:#625C7D; --sel:#12A3A0; --tang:#FF8A3D; --card:#FFFFFF; --back:#FFF6EC; --focus:#FF8A3D;
+  color-scheme: light;
+  box-sizing:border-box; padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme: dark){
+  :root{ --desk:#1C1A29; --dot:#34304A; --bar:#3E2596; --panel:#262338; --panel-line:#3A3552;
+    --ink:#F1EEFA; --muted:#B4ADCF; --card:#2D2942; --back:#3A2C25; color-scheme: dark; }
+}
+*,*::before,*::after{box-sizing:inherit}
+html,body{height:100%;margin:0}
+body{background:var(--desk);color:var(--ink);font-family:"Atkinson Hyperlegible",Verdana,system-ui,sans-serif;display:flex;flex-direction:column}
+.top{background:var(--bar);color:var(--bar-ink);display:flex;align-items:center;gap:1rem;padding:.6rem 1rem;flex-wrap:wrap}
+.top h1{font-family:"Baloo 2","Trebuchet MS",sans-serif;font-weight:800;font-size:1.25rem;margin:0;line-height:1.1}
+.top .sub{font-size:.85rem;opacity:.85}
+.top .count{margin-left:auto;font-weight:700;background:rgba(255,255,255,.16);padding:.3rem .7rem;border-radius:6px}
+.work{flex:1;display:grid;grid-template-columns:240px 1fr;min-height:0}
+.panel{background:var(--panel);border-right:1px solid var(--panel-line);overflow:auto;padding:.75rem}
+.panel h2{font-size:.8rem;color:var(--muted);margin:.2rem .3rem .6rem;font-weight:700}
+.panel ol{list-style:none;margin:0;padding:0;display:grid;gap:4px}
+.panel button{width:100%;text-align:left;font:inherit;font-size:.92rem;color:var(--ink);background:transparent;border:1px solid transparent;border-radius:6px;padding:.45rem .6rem;cursor:pointer;display:flex;gap:.5rem;align-items:center}
+.panel button:hover{background:color-mix(in srgb,var(--sel) 10%,transparent)}
+.panel button[aria-current="true"]{border-color:var(--sel);background:color-mix(in srgb,var(--sel) 14%,transparent);font-weight:700}
+.panel .seen{width:.55rem;height:.55rem;border-radius:2px;border:1.5px solid var(--muted);flex:none}
+.panel .seen.on{background:var(--tang);border-color:var(--tang)}
+.canvas{position:relative;display:flex;align-items:center;justify-content:center;padding:2rem 1.25rem;
+  background-image:radial-gradient(var(--dot) 1.2px,transparent 1.2px);background-size:22px 22px;overflow:hidden}
+.stage{width:min(560px,100%);perspective:1400px}
+.frame{position:relative;padding:14px}
+.frame::before{content:"";position:absolute;inset:0;border:2px solid var(--sel);border-radius:4px;pointer-events:none}
+.h{position:absolute;width:12px;height:12px;background:#fff;border:2px solid var(--sel);border-radius:2px}
+.h.tl{top:-4px;left:-4px}.h.tr{top:-4px;right:-4px}.h.bl{bottom:-4px;left:-4px}.h.br{bottom:-4px;right:-4px}
+.dim{position:absolute;bottom:-30px;left:50%;transform:translateX(-50%);background:var(--sel);color:#fff;font-size:.75rem;font-weight:700;padding:.15rem .5rem;border-radius:4px;white-space:nowrap}
+.card{display:block;width:100%;aspect-ratio:3/2;border:0;padding:0;background:none;cursor:pointer;font:inherit;color:inherit}
+.inner{display:block;position:relative;width:100%;height:100%;transition:transform .55s cubic-bezier(.3,.7,.2,1);transform-style:preserve-3d}
+.card[aria-pressed="true"] .inner{transform:rotateY(180deg)}
+.face{text-align:left;position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;border-radius:6px;display:flex;flex-direction:column;justify-content:center;padding:1.5rem 1.75rem;box-shadow:0 1px 0 var(--panel-line)}
+.front{background:var(--card)}
+.back{background:var(--back);transform:rotateY(180deg)}
+.layer,.term,.hint,.def,.backterm{display:block}
+.layer{font-size:.8rem;color:var(--muted);font-weight:700;margin-bottom:.5rem}
+.term{font-family:"Baloo 2","Trebuchet MS",sans-serif;font-weight:800;font-size:clamp(2rem,6vw,3.2rem);line-height:1.05;margin:0;color:var(--bar)}
+@media (prefers-color-scheme: dark){.term{color:#C9B8FF}}
+.hint{margin-top:1rem;font-size:.9rem;color:var(--muted)}
+.def{font-size:clamp(1.05rem,2.6vw,1.3rem);line-height:1.5;margin:0}
+.backterm{font-family:"Baloo 2","Trebuchet MS",sans-serif;font-weight:800;font-size:1.1rem;color:var(--tang);margin:0 0 .4rem}
+.bottom{background:var(--panel);border-top:1px solid var(--panel-line);display:flex;align-items:center;gap:.6rem;padding:.6rem 1rem;flex-wrap:wrap}
+.bottom button{font:inherit;font-weight:700;font-size:.95rem;border-radius:6px;border:1.5px solid var(--panel-line);background:var(--panel);color:var(--ink);padding:.5rem .9rem;cursor:pointer}
+.bottom button.primary{background:var(--tang);border-color:var(--tang);color:#2A1300}
+.bottom button:hover{border-color:var(--sel)}
+.track{flex:1;min-width:120px;display:flex;align-items:center;gap:.6rem;font-size:.85rem;color:var(--muted)}
+.rail{flex:1;height:6px;border-radius:3px;background:var(--panel-line);position:relative}
+.fill{position:absolute;inset:0 auto 0 0;background:var(--sel);border-radius:3px;transition:width .3s}
+:focus-visible{outline:3px solid var(--focus);outline-offset:3px}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+@media (max-width:760px){
+  .work{grid-template-columns:1fr;grid-template-rows:auto 1fr}
+  .panel{border-right:0;border-bottom:1px solid var(--panel-line);padding:.5rem}
+  .panel h2{display:none}
+  .panel ol{display:flex;overflow-x:auto;gap:6px}
+  .panel button{white-space:nowrap}
+  .canvas{padding:1.5rem .75rem 2.5rem}
+  .card{aspect-ratio:4/3}
+}
+@media (prefers-reduced-motion: reduce){
+  .inner{transition:none;transform:none!important}
+  .back{transform:none;opacity:0}
+  .card[aria-pressed="true"] .front{opacity:0}
+  .card[aria-pressed="true"] .back{opacity:1}
+  .fill{transition:none}
+}
+</style>
+</head>
+<body>
+<header class="top">
+  <div>
+    <h1>Canva Keywords</h1>
+    <div class="sub">Grade 5 · Chapter 4: Canva — flip each card to check the meaning</div>
+  </div>
+  <div class="count" id="count" aria-live="polite">Card 1 of 15</div>
+</header>
+<div class="work">
+  <nav class="panel" aria-label="All keywords">
+    <h2>Object Panel — keywords</h2>
+    <ol id="list"></ol>
+  </nav>
+  <main class="canvas">
+    <div class="stage">
+      <div class="frame">
+        <span class="h tl"></span><span class="h tr"></span><span class="h bl"></span><span class="h br"></span>
+        <button class="card" id="card" aria-pressed="false" aria-describedby="howto">
+          <span class="inner">
+            <span class="face front">
+              <span class="layer">Keyword</span>
+              <span class="term" id="term"></span>
+              <span class="hint">Click, tap or press Enter to flip</span>
+            </span>
+            <span class="face back">
+              <span class="backterm" id="backterm"></span>
+              <span class="def" id="def"></span>
+            </span>
+          </span>
+        </button>
+        <span class="dim" id="dim">Front · Keyword</span>
+      </div>
+    </div>
+    <p class="sr" id="howto">Press Enter or Space to flip. Use the left and right arrow keys to move between cards.</p>
+  </main>
+</div>
+<footer class="bottom">
+  <button id="prev" type="button">Previous card</button>
+  <button id="flip" type="button" class="primary">Flip card</button>
+  <button id="next" type="button">Next card</button>
+  <button id="shuffle" type="button">Shuffle deck</button>
+  <div class="track"><span id="seenTxt">0 of 15 flipped</span><div class="rail" aria-hidden="true"><div class="fill" id="fill" style="width:0"></div></div></div>
+</footer>
+<script>
+const DATA = [["Brand Kit","A Canva feature for Pro and Team users that stores a group’s colours, fonts and logos so that all their designs look consistent."],["Canva","An online platform with a simple drag-and-drop interface that makes it easy to create graphics such as posters, invitations, banners, tickets and flyers."],["Canva AI","A Canva tool that uses artificial intelligence to help you write content, such as a paragraph, heading or caption, from the words you type in."],["Canvas","The large white area in the centre of the Canva Editor Window where you create your design by dragging and dropping templates, images, text and elements."],["Crown Icon","A small crown symbol shown on some Canva templates and elements, which means they are available only to Canva Pro users."],["Custom Size","An option that lets you create a design with your own width and height, in pixels, inches or centimetres, for special poster or printing needs."],["Drag and Drop","Moving an item by holding down the mouse button on it, moving it to a new place, and releasing the button; Canva uses this to place items on the canvas."],["Elements","A tab in the Object Panel used to add shapes, lines, icons, stickers and graphics to a design."],["Magic Media","A Canva tool that uses AI to create images or designs from the words you type, and suggests layouts and styles automatically."],["Object Panel","The panel on the left side of the Canva Editor Window that holds all the tabs needed to build a design, such as Design, Elements, Text, Uploads and Charts."],["Photo Editor","A Canva tool for quickly editing a single photo without creating a full design — for example cropping it, adjusting colours or applying filters."],["Real-time Collaboration","A Canva feature that lets several people work on the same design at the same time and share feedback instantly."],["Template","A ready-made design, such as a poster or invitation layout, that you can change with your own words and pictures to finish a design quickly."],["Uploads","A tab that lets you bring your own images, videos or audio files from your computer or other devices into a Canva design."],["Whiteboard Tool","A digital space in Canva for organising ideas, adding sticky notes, drawing diagrams or planning group projects in a creative way."]];
+let order = DATA.map((_, i) => i), pos = 0;
+const seen = new Set();
+const $ = id => document.getElementById(id);
+const card = $('card');
+function renderList(){
+  $('list').innerHTML = '';
+  order.forEach((idx, p) => {
+    const li = document.createElement('li');
+    const b = document.createElement('button');
+    b.type = 'button';
+    b.innerHTML = '<span class="seen' + (seen.has(idx) ? ' on' : '') + '" aria-hidden="true"></span>';
+    b.appendChild(document.createTextNode(DATA[idx][0]));
+    if (p === pos) b.setAttribute('aria-current', 'true');
+    b.addEventListener('click', () => { pos = p; show(); });
+    li.appendChild(b); $('list').appendChild(li);
+  });
+}
+function show(){
+  const [t, d] = DATA[order[pos]];
+  card.setAttribute('aria-pressed', 'false');
+  $('term').textContent = t; $('backterm').textContent = t; $('def').textContent = d;
+  $('count').textContent = 'Card ' + (pos + 1) + ' of ' + DATA.length;
+  $('dim').textContent = 'Front · Keyword';
+  card.setAttribute('aria-label', 'Keyword: ' + t + '. Press to show the meaning.');
+  renderList();
+}
+function flip(){
+  const on = card.getAttribute('aria-pressed') !== 'true';
+  card.setAttribute('aria-pressed', String(on));
+  const [t, d] = DATA[order[pos]];
+  $('dim').textContent = on ? 'Back · Meaning' : 'Front · Keyword';
+  card.setAttribute('aria-label', on ? t + ': ' + d : 'Keyword: ' + t + '. Press to show the meaning.');
+  if (on) { seen.add(order[pos]); updateSeen(); renderList(); }
+}
+function updateSeen(){
+  $('seenTxt').textContent = seen.size + ' of ' + DATA.length + ' flipped';
+  $('fill').style.width = (seen.size / DATA.length * 100) + '%';
+}
+function go(step){ pos = (pos + step + order.length) % order.length; show(); }
+card.addEventListener('click', flip);
+$('flip').addEventListener('click', flip);
+$('next').addEventListener('click', () => go(1));
+$('prev').addEventListener('click', () => go(-1));
+$('shuffle').addEventListener('click', () => {
+  for (let i = order.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [order[i], order[j]] = [order[j], order[i]]; }
+  pos = 0; show();
+});
+document.addEventListener('keydown', e => {
+  if (e.target.closest('.panel')) return;
+  if (e.key === 'ArrowRight') { go(1); e.preventDefault(); }
+  else if (e.key === 'ArrowLeft') { go(-1); e.preventDefault(); }
+});
+show(); updateSeen();
+</script>
+</body>
+</html>
